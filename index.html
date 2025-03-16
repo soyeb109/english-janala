@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English Janala</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- sweet alert -->
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <style>
+      .font-poppins {
+        font-family: Poppins;
+      }
+      .noto-serif {
+        font-family: Noto Serif Bengali;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .active {
+        background: #422ad5;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="font-poppins">
+    <header class="border-b border-b-[#18181B60] top-0 hidden" id="navbar">
+      <nav class="w-11/12 mx-auto py-5">
+        <div class="navbar">
+          <div class="flex-1">
+            <div class="flex gap-1">
+              <h2 class="font-semibold">English</h2>
+              <img class="w-[28px]" src="./assets/logo.png" alt="Logo" />
+              <h2 class="noto-serif font-semibold">জানালা</h2>
+            </div>
+          </div>
+          <div class="flex-none">
+            <ul class="menu menu-horizontal gap-4">
+              <li>
+                <button
+                  class="text-[#422AD5] border border-bg-[#422AD5] py-2 px-4 hover:bg-[#422AD5] hover:text-[#C6BDBD]"
+                >
+                  <i class="fa-regular fa-circle-question"></i>
+                  <a href="#faq">FAQ</a>
+                </button>
+              </li>
+              <li>
+                <button
+                  class="text-[#422AD5] border border-bg-[#422AD5] py-2 px-4 hover:bg-[#422AD5] hover:text-[#C6BDBD]"
+                >
+                  <i class="fa-solid fa-book-open"></i>
+                  <a href="#learn">Learn</a>
+                </button>
+              </li>
+              <li>
+                <button
+                  class="text-[#422AD5] border border-bg-[#422AD5] py-2 px-4 hover:bg-[#422AD5] hover:text-[#C6BDBD]"
+                >
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  <a href="#logout" id="logout-button">Logout</a>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Banner Section -->
+    <section
+      id="banner-section"
+      class="bg-white p-8 rounded-lg shadow-lg w-full flex flex-col md:flex-row items-center justify-between md:mt-20 mt-20"
+    >
+      <!-- Left Side -->
+      <div class="md:w-1/2 w-full p-5">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">
+          <span class="text-[#00BCFF]">English</span> is Easy!!
+        </h1>
+        <p class="text-[#18181B] noto-serif mb-4 my-4">
+          আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
+          আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে
+          অন্য একটি Level এ
+        </p>
+
+        <div class="space-y-3 mb-8 my-8">
+          <input
+            id="name"
+            type="text"
+            placeholder="Enter your name here"
+            class="border-none py-2 focus-within:outline-none"
+          />
+          <br />
+          <input
+            id="password"
+            type="password"
+            placeholder="******"
+            class="border-none focus-within:outline-none"
+          />
+        </div>
+
+        <button
+          id="getStartedBtn"
+          class="bg-[#3D26C7] text-white px-4 py-2 rounded hover:bg-[#422AD5] cursor-pointer"
+        >
+          Get Started
+        </button>
+      </div>
+
+      <!-- Right Side -->
+      <div class="md:w-1/2 w-full flex">
+        <img
+          src="./assets/hero-student.png"
+          alt="Student image"
+          class="rounded-lg w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Vocabulary Section -->
+    <section
+      id="learn-section"
+      class="text-center mb-6 container mx-auto hidden mt-48"
+    >
+      <h1 class="text-3xl font-bold text-gray-800">
+        <span class="text-[#00BCFF]">Let's</span> Learn Vocabularies
+      </h1>
+
+      <!-- Lesson Button -->
+      <section
+        id="lesson-btn-container"
+        class="flex flex-wrap justify-center gap-4 p-4 lesson-btn"
+      ></section>
+      <section id="loader" class="text-center py-10 hidden">
+        <span class="loading loading-dots loading-md"></span>
+      </section>
+      <div id="select-lesson">
+        <h2 class="noto-serif text-gray-600 p-8 mt-20">
+          আপনি এখনো কোন Lesson Select করেন নি
+        </h2>
+        <h3 class="text-3xl font-semibold noto-serif">
+          একটি <span class="font-bold text-2xl">Lesson Select</span> করুন ।
+        </h3>
+      </div>
+
+      <section class="mt-8">
+        <div
+          id="wordsContainer"
+          class="words-container grid place-items-center min-h-screen lg:grid-cols-3 gap-1 md:grid-cols-2"
+        ></div>
+      </section>
+      <section id="loader" class="text-center py-10 hidden">
+        <span class="loading loading-dots loading-md"></span>
+      </section>
+
+      <!-- Open the modal using ID.showModal() method -->
+      <!-- <button class="btn" onclick="word_details.showModal()">open modal</button> -->
+      <dialog id="word_details" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+          <div id="details-container" class="text-left space-y-4"></div>
+          <div class="modal-action justify-start">
+            <form method="dialog">
+              <button
+                class="bg-[#3D26C7] text-white px-4 py-2 rounded hover:bg-[#422AD5] cursor-pointer"
+              >
+                Close
+              </button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </section>
+
+    <!-- FAQ Sectiopn -->
+
+    <section id="faq" class="hidden mx-auto">
+      <h1 class="text-3xl text-center font-bold text-gray-800 mt-20">
+        <span class="text-[#00BCFF]">Frequently</span> Asked Questions
+      </h1>
+      <div
+        class="collapse collapse-plus bg-base-100 border border-base-300 mt-8"
+      >
+        <input type="radio" name="my-accordion-3" checked="checked" />
+        <div class="collapse-title font-semibold">
+          The difference between var, let, and const
+        </div>
+        <div class="collapse-content text-sm">
+          var is to declare variables with function or global scope that allows
+          re-declaration again and again, let declares with block scope, its
+          allows to update but dont allow to re-declarion and update inside the
+          same scope, const is block scoped that cannot be reassigned after
+          intialize
+        </div>
+      </div>
+      <div class="collapse collapse-plus bg-base-100 border border-base-300">
+        <input type="radio" name="my-accordion-3" />
+        <div class="collapse-title font-semibold">
+          the difference between map(), forEach(), and filter()
+        </div>
+        <div class="collapse-content text-sm">
+          map() creates a new array and filter also return a new array but with
+          satisfy a specicified condtion it does not change the original array
+          and forEach to excute the same code on every item or elements in a
+          array it dont change the array
+        </div>
+      </div>
+      <div class="collapse collapse-plus bg-base-100 border border-base-300">
+        <input type="radio" name="my-accordion-3" />
+        <div class="collapse-title font-semibold">
+          explain arrow functions and how they are different from regular
+          functions
+        </div>
+        <div class="collapse-content text-sm">
+          Arrow function and regular function have syntax difference and arrow
+          function allow this method in its own scope and regular function can
+          be used as a constructor while arrow function cannot also regular
+          function have dynamic this and can have arguments if you console log
+          it
+        </div>
+      </div>
+      <div class="collapse collapse-plus bg-base-100 border border-base-300">
+        <input type="radio" name="my-accordion-3" />
+        <div class="collapse-title font-semibold">
+          how JavaScript Promises work
+        </div>
+        <div class="collapse-content text-sm">
+          Promise use it to handle asynchronus task. if we fetch a data from a
+          server and what to do until the data get from the server that what we
+          can control with Promise what to do until the data gets from the
+          server it takes 2 arguments 1. resolve 2.reject, resolve means the
+          operation has end and have been success and reject mean operation is
+          end but something is wrong
+        </div>
+      </div>
+      <div class="collapse collapse-plus bg-base-100 border border-base-300">
+        <input type="radio" name="my-accordion-3" />
+        <div class="collapse-title font-semibold">
+          how closures work in JavaScript
+        </div>
+        <div class="collapse-content text-sm">
+          Closure are to maintain the state like its based on lexical scope
+          meaning that functions scope determined by where the function is
+          defined not where its excuted Closure can ecapsulate variables making
+          them private.
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer section-->
+
+    <footer class="footer mt-16 sm:footer-horizontal items-center p-4">
+      <aside class="mt-16 space-x-4">
+        <div class="flex">
+          <h2 class="font-semibold">English</h2>
+          <img class="w-[28px]" src="./assets/logo.png" alt="Logo" />
+          <h2 class="noto-serif font-semibold">জানালা</h2>
+        </div>
+        <h1 class="font-bold noto-serif text-2xl">ইংরেজি শিখুন সহজে</h1>
+        <p class="">Providing ED-Tech Applications since 2025</p>
+      </aside>
+      <nav
+        class="grid-flow-col gap-4 md:place-self-center md:justify-self-end text-2xl"
+      >
+        <a
+          href="https://www.facebook.com/soyeb.ahmed.7662/"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fa-brands fa-facebook"></i
+        ></a>
+        <a href="youtube.com" target="_blank" rel="noopener noreferrer"
+          ><i class="fa-brands fa-youtube"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/code_shoaib"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a
+          href="https://github.com/soyeb109"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+      </nav>
+    </footer>
+
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>
